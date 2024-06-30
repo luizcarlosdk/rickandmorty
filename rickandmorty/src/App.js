@@ -1,23 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from "axios";
+import { useEffect, useState } from "react";
+import "./App.css";
 
 function App() {
+  const [characters, setCharacters] = useState([]);
+  URL = "https://rickandmortyapi.com/graphql";
+  useEffect(() => {
+    const fetchCharacters = async () => {
+      const query = `query { characters { results { name image status } } } `;
+      axios
+        .post(
+          URL,
+          {
+            query,
+          },
+          { timeout: 5000 }
+        )
+
+        .then((response) => {
+          setCharacters(response.data.data.characters.results);
+        })
+
+        .catch((error) => {
+          window.alert(error);
+        });
+    };
+
+    fetchCharacters();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Rick and Morty Characters</h1>
+  
+        {characters.map((character) => (
+          <div key={character.name}>
+            <img src={character.image} alt={character.name} />
+            <h2>{character.name}</h2>
+            <p>Status: {character.status}</p>
+          </div>
+        ))}
+   
     </div>
   );
 }
