@@ -31,11 +31,11 @@ function Characters() {
   return (
     <div className="charactersList">
       {characters.map((character) => (
-          <div className="card">
-            <img src={character.image} alt={character.name} />
-            <h2>{character.name}</h2>
-            <p>Status: {character.status}</p>
-          </div>
+        <div className="card">
+          <img className="cardImage" src={character.image} alt={character.name} />
+          <h2>{character.name}</h2>
+          <p>Status: {character.status}</p>
+        </div>
       ))}
     </div>
   );

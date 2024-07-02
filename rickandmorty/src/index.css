@@ -1,10 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 
+body {
+  background-color: black;
+}
+
 * {
   margin: 0;
   font-family: "Quicksand";
   color: #000;
-  background-color: white;
 }
 
 .content {
@@ -13,6 +16,11 @@
 
 .title {
   font-size: 60px;
+  color: white;
+}
+
+.cardImage {
+  border-radius: 10px 10px 0px 0px;
 }
 
 .card {
@@ -20,16 +28,21 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2);
   transition: 0.3s;
-  border-style: solid;
+  border-style: groove;
   border-color: white;
-  border-radius: 20px;
-  max-width: 300px;
-  padding: 10px;
+  border-radius: 13px;
+  padding: 0 0 10px 0px;
+  background-color: grey;
 }
 
 .card:hover {
-  box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 7);
-  padding: 20px;
+  box-shadow: 0 2px 16px 0 rgba(255, 255, 255, 7);
+}
+
+.charactersList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
