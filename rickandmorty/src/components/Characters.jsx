@@ -2,24 +2,15 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Modal from "./Modal";
 
-function Characters() {
+function Characters({pageNumber}) {
   const [characters, setCharacters] = useState([]);
   const [modal, setModal] = useState(false);
   const [modalCharacter, setModalCharacter] = useState({});
-  const [pageNumber, setPageNumber] = useState(1);
+
 
   const handleClick = (character) => {
     setModalCharacter(character);
     setModal(!modal);
-  };
-
-  const nextPage = () => {
-    setPageNumber(pageNumber + 1);
-  };
-  const previousPage = () => {
-    if (pageNumber !== 1) {
-      setPageNumber(pageNumber - 1);
-    }
   };
 
   useEffect(() => {
@@ -56,7 +47,6 @@ function Characters() {
   }, [pageNumber]);
 
   return (
-    <div>
       <div className="charactersList">
         {modal && (
           <Modal
@@ -81,13 +71,7 @@ function Characters() {
           </div>
         ))}
       </div>
-      <div className="pageButtons">
-        <button onClick={previousPage} disabled={pageNumber === 1}>
-          Página Anterior
-        </button>
-        <button onClick={nextPage}>Próxima página</button>
-      </div>
-    </div>
+
   );
 }
 

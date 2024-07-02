@@ -53,6 +53,11 @@ body {
   top: 10px;
   right: 10px;
   padding: 5px 7px;
+  border-radius: 15px;
+}
+
+.closeModal:hover {
+  background-color: #45a049;
 }
 
 .modal {
@@ -63,6 +68,7 @@ body {
   right: 0;
   bottom: 0;
   position: fixed;
+  background-color: rgba(0, 0, 0, 0.7)
 }
 
 .modalContent {
@@ -73,12 +79,13 @@ body {
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  line-height: 1.4;
-  background: grey;
-  padding: 14px 28px;
-  border-radius: 3px;
+  line-height: 1.5;
+  background: rgb(175, 159, 159);
+  padding: 20px 28px;
+  border-radius: 20px;
   max-width: 600px;
   min-width: 300px;
+  
 }
 
 .pageButtons {
@@ -108,4 +115,15 @@ body {
 .pageButtons button:disabled {
   background-color: #cccccc; /* Grey */
   cursor: not-allowed;
+}
+
+@media (max-width: 800px) {
+  .title {
+    font-size: 46px;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
