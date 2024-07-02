@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Modal from "./Modal"
 
 function Characters() {
   const [characters, setCharacters] = useState([]);
@@ -30,7 +31,7 @@ function Characters() {
 
         .catch((error) => {
           window.alert(error);
-          console.log(error)
+          console.log(error.code)
         });
     };
 
@@ -40,23 +41,12 @@ function Characters() {
   return (
     <div className="charactersList">
       {modal && (
-        <div className="modal">
-          <div className="modalContent">
-            <img
-              className="cardImage"
-              src={modalCharacter.image}
-              alt={modalCharacter.name}
-            />
-            <h2>{modalCharacter.name}</h2>
-            <p>
-              <b>Episodes</b>:{" "}
-              {modalCharacter.episode.map((episode) => episode.id).join(", ")}
-            </p>
-            <button className="closeModal" onClick={HandleClick}>
-              Retornar a listagem
-            </button>
-          </div>
-        </div>
+        <Modal
+          name={modalCharacter.name}
+          imageURL={modalCharacter.image}
+          episodes={modalCharacter.episode}
+          closeModal={HandleClick}
+        />
       )}
 
       {characters.map((character) => (
