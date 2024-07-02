@@ -8,7 +8,7 @@ const Modal = ({ name, imageURL, episodes, closeModal }) => {
           <b>Episodes</b>: {episodes.map((episode) => episode.id).join(", ")}
         </p>
         <button className="closeModal" onClick={closeModal}>
-          Retornar a listagem
+          Return to cards
         </button>
       </div>
     </div>

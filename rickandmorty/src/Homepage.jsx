@@ -20,9 +20,9 @@ const Homepage = () => {
       <Characters pageNumber={pageNumber}/>
       <div className="pageButtons">
         <button onClick={previousPage} disabled={pageNumber === 1}>
-          Página Anterior
+          Previous Page
         </button>
-        <button onClick={nextPage}>Próxima página</button>
+        <button onClick={nextPage}>Next Page</button>
       </div>
     </div>
   );
