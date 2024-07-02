@@ -4,13 +4,12 @@ import "./App.css";
 
 function App() {
   const [characters, setCharacters] = useState([]);
-  URL = "https://rickandmortyapi.com/graphql";
   useEffect(() => {
     const fetchCharacters = async () => {
-      const query = `query { characters { results { name image status } } } `;
+      const query = `query { characters { results { name image status episode {id }} } } `;
       axios
         .post(
-          URL,
+          "https://rickandmortyapi.com/graphql",
           {
             query,
           },
@@ -19,6 +18,7 @@ function App() {
 
         .then((response) => {
           setCharacters(response.data.data.characters.results);
+          console.log(characters)
         })
 
         .catch((error) => {
