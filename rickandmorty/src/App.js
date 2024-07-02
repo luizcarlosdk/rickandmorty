@@ -1,46 +1,14 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import "./App.css";
+import Characters from "./components/Characters";
 
 function App() {
-  const [characters, setCharacters] = useState([]);
-  useEffect(() => {
-    const fetchCharacters = async () => {
-      const query = `query { characters { results { name image status episode {id }} } } `;
-      axios
-        .post(
-          "https://rickandmortyapi.com/graphql",
-          {
-            query,
-          },
-          { timeout: 5000 }
-        )
-
-        .then((response) => {
-          setCharacters(response.data.data.characters.results);
-          console.log(characters)
-        })
-
-        .catch((error) => {
-          window.alert(error);
-        });
-    };
-
-    fetchCharacters();
-  }, []);
-
+  const title = "Rick and Morty Characters"
   return (
     <div className="App">
-      <h1>Rick and Morty Characters</h1>
-  
-        {characters.map((character) => (
-          <div key={character.name}>
-            <img src={character.image} alt={character.name} />
-            <h2>{character.name}</h2>
-            <p>Status: {character.status}</p>
-          </div>
-        ))}
-   
+      <div className="content">
+        <h1>{title}</h1>
+        <Characters/>
+      </div>
     </div>
   );
 }
