@@ -29,15 +29,13 @@ function Characters() {
   }, []);
 
   return (
-    <div className="Characters">
+    <div className="charactersList">
       {characters.map((character) => (
-        <div>
-          <a href="">
+          <div className="card">
             <img src={character.image} alt={character.name} />
-          </a>
-          <h2>{character.name}</h2>
-          <p>Status: {character.status}</p>
-        </div>
+            <h2>{character.name}</h2>
+            <p>Status: {character.status}</p>
+          </div>
       ))}
     </div>
   );
